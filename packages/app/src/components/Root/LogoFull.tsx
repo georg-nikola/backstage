@@ -9,8 +9,7 @@ const useStyles = makeStyles({
     fill: '#7df3e1',
   },
 });
-
-export const LogoFull = () => {
+const LogoFull = () => {
   const classes = useStyles();
 
   return (
@@ -26,3 +25,5 @@ export const LogoFull = () => {
     </svg>
   );
 };
+
+export default LogoFull;

@@ -17,7 +17,7 @@
     "test:all": "backstage-cli repo test --coverage",
     "test:e2e": "playwright test",
     "fix": "backstage-cli repo fix",
-    "lint": "backstage-cli repo lint --since origin/main",
+    "lint": "backstage-cli repo lint --since origin/master",
     "lint:all": "backstage-cli repo lint",
     "prettier:check": "prettier --check .",
     "new": "backstage-cli new"
@@ -27,7 +27,20 @@
       "new": {
         "globals": {
           "license": "UNLICENSED"
-        }
+        },
+        "templates": [
+          "@backstage/cli-module-new/templates/legacy-frontend-plugin",
+          "@backstage/cli-module-new/templates/backend-plugin",
+          "@backstage/cli-module-new/templates/backend-plugin-module",
+          "@backstage/cli-module-new/templates/plugin-web-library",
+          "@backstage/cli-module-new/templates/plugin-node-library",
+          "@backstage/cli-module-new/templates/plugin-common-library",
+          "@backstage/cli-module-new/templates/web-library",
+          "@backstage/cli-module-new/templates/node-library",
+          "@backstage/cli-module-new/templates/cli-module",
+          "@backstage/cli-module-new/templates/catalog-provider-module",
+          "@backstage/cli-module-new/templates/scaffolder-backend-module"
+        ]
       }
     }
   },

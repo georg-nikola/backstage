@@ -24,7 +24,7 @@ export default defineConfig({
   timeout: 60_000,
 
   expect: {
-    timeout: 30_000,
+    timeout: 5_000,
   },
 
   // Run your local dev server before starting the tests
@@ -33,9 +33,9 @@ export default defineConfig({
     : [
         {
           command: 'yarn start app',
-          url: 'http://localhost:3000',
+          port: 3000,
           reuseExistingServer: true,
-          timeout: 120_000,
+          timeout: 60_000,
         },
         {
           command: 'yarn start backend',
