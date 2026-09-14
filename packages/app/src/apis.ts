@@ -10,12 +10,18 @@ import {
   createApiFactory,
   createApiRef,
   discoveryApiRef,
+  errorApiRef,
+  fetchApiRef,
+  identityApiRef,
   oauthRequestApiRef,
   OpenIdConnectApi,
   ProfileInfoApi,
   SessionApi,
+  storageApiRef,
 } from '@backstage/core-plugin-api';
 import { OAuth2 } from '@backstage/core-app-api';
+import { UserSettingsStorage } from '@backstage/plugin-user-settings';
+import { signalApiRef } from '@backstage/plugin-signals-react';
 
 export const oidcAuthApiRef = createApiRef<
   OpenIdConnectApi & ProfileInfoApi & BackstageIdentityApi & SessionApi
@@ -28,6 +34,17 @@ export const apis: AnyApiFactory[] = [
     api: scmIntegrationsApiRef,
     deps: { configApi: configApiRef },
     factory: ({ configApi }) => ScmIntegrationsApi.fromConfig(configApi),
+  }),
+  createApiFactory({
+    api: storageApiRef,
+    deps: {
+      discoveryApi: discoveryApiRef,
+      errorApi: errorApiRef,
+      fetchApi: fetchApiRef,
+      identityApi: identityApiRef,
+      signalApi: signalApiRef,
+    },
+    factory: deps => UserSettingsStorage.create(deps),
   }),
   ScmAuth.createDefaultApiFactory(),
   createApiFactory({
